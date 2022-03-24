@@ -8,5 +8,6 @@ data class Position(val x: Int, val y: Int) {
                 Position(x, y)
             }
         }.toSet() - this
-
 }
+
+infix fun Int.x(y: Int) = Position(this, y)

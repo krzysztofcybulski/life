@@ -1,6 +1,7 @@
 package me.kcybulski.life
 
 import io.kotest.core.spec.style.ShouldSpec
+import io.kotest.matchers.shouldBe
 
 class ConwayGameSpec: ShouldSpec({
 
@@ -17,7 +18,7 @@ class ConwayGameSpec: ShouldSpec({
         val end = start.nextGeneration()
 
         //then
-        end.map shouldBe map(
+        end.livingCells shouldBe map(
             "   ",
             "   ",
             "   "
@@ -38,7 +39,7 @@ class ConwayGameSpec: ShouldSpec({
         val end = start.nextGeneration()
 
         //then
-        end.map shouldBe map(
+        end.livingCells shouldBe map(
             "    ",
             " ** ",
             " ** ",
@@ -59,7 +60,7 @@ class ConwayGameSpec: ShouldSpec({
         val end = start.nextGeneration()
 
         //then
-        end.map shouldBe map(
+        end.livingCells shouldBe map(
             "   ",
             "***",
             "   ",

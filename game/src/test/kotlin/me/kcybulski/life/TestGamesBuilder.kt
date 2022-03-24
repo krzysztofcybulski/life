@@ -1,8 +1,13 @@
 package me.kcybulski.life
 
+import me.kcybulski.life.game.EventBus
 import me.kcybulski.life.game.Game
-import me.kcybulski.life.game.GameMap
+import me.kcybulski.life.game.GameFactory
+import me.kcybulski.life.game.NopEventBus
+import me.kcybulski.life.game.Position
+
 
 fun conway(
-    map: GameMap = emptyMap()
-): Game = Game(map)
+    map: Set<Position> = emptyMap(),
+    eventBus: EventBus = NopEventBus
+): Game = GameFactory(eventBus).conway(map)
