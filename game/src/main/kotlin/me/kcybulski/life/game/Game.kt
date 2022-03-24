@@ -1,11 +1,17 @@
 package me.kcybulski.life.game
 
-class Game {
+class Game(
+    val map: GameMap,
+    val rules: Rules = Conway,
+    val generation: Int = 0
+) {
 
-    val map: GameMap = TODO()
+    fun afterGenerations(n: Int): Game = this
 
-    fun afterGenerations(n: Int): Game = TODO()
-
-    fun nextGeneration(): Game = TODO()
+    fun nextGeneration(): Game = Game(
+        map = map.next(rules),
+        rules = rules,
+        generation = generation + 1
+    )
 
 }

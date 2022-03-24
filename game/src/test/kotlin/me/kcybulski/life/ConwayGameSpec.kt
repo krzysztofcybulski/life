@@ -17,7 +17,7 @@ class ConwayGameSpec: ShouldSpec({
         val end = start.nextGeneration()
 
         //then
-        end.map === map(
+        end.map shouldBe map(
             "   ",
             "   ",
             "   "
@@ -38,7 +38,7 @@ class ConwayGameSpec: ShouldSpec({
         val end = start.nextGeneration()
 
         //then
-        end.map === map(
+        end.map shouldBe map(
             "    ",
             " ** ",
             " ** ",
@@ -59,7 +59,7 @@ class ConwayGameSpec: ShouldSpec({
         val end = start.nextGeneration()
 
         //then
-        end.map === map(
+        end.map shouldBe map(
             "   ",
             "***",
             "   ",
