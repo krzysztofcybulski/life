@@ -9,24 +9,22 @@ class Game(
 
     val livingCells = map.livingCells
 
-    fun afterGenerations(n: Int): Game = this
-
-    fun nextGeneration(): Game {
+    suspend fun nextGeneration(): Game {
         val (newMap, newborns, dead) = map.next(rules)
-        newborns.forEach(this::notifyAboutNewborn)
-        dead.forEach(this::notifyAboutDeath)
+        newborns.forEach { notifyAboutNewborn(it) }
+        dead.forEach { notifyAboutDeath(it) }
         notifyAboutGenerationEnd()
         return copy(newMap)
     }
 
-    private fun notifyAboutNewborn(position: Position) {
+    private suspend fun notifyAboutNewborn(position: Position) {
         eventBus.send(CellBorn(generation, position))
     }
 
-    private fun notifyAboutDeath(position: Position) {
+    private suspend fun notifyAboutDeath(position: Position) {
         eventBus.send(CellDie(generation, position))
     }
-    private fun notifyAboutGenerationEnd() {
+    private suspend fun notifyAboutGenerationEnd() {
         eventBus.send(GenerationEnded(generation))
     }
 
