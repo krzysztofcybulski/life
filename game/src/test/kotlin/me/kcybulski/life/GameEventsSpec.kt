@@ -9,7 +9,7 @@ import me.kcybulski.life.game.GenerationEnded
 import me.kcybulski.life.game.HandlersEventBus
 import me.kcybulski.life.game.x
 
-class GameEventsSpec: ShouldSpec({
+class GameEventsSpec : ShouldSpec({
 
     val handler = mockk<suspend (Any) -> Unit>(relaxed = true)
     val eventBus = HandlersEventBus(listOf(handler))
@@ -28,11 +28,11 @@ class GameEventsSpec: ShouldSpec({
         start.nextGeneration()
 
         //then
-        coVerify(exactly = 1) { handler(CellBorn(0, 1 x 0)) }
-        coVerify(exactly = 1) { handler(CellBorn(0, 1 x 2)) }
-        coVerify(exactly = 1) { handler(CellDie(0, 0 x 1)) }
-        coVerify(exactly = 1) { handler(CellDie(0, 2 x 1)) }
-        coVerify(exactly = 1) { handler(GenerationEnded(0)) }
+        coVerify(exactly = 1) { handler(CellBorn(start.id, 0, 1 x 0)) }
+        coVerify(exactly = 1) { handler(CellBorn(start.id, 0, 1 x 2)) }
+        coVerify(exactly = 1) { handler(CellDie(start.id, 0, 0 x 1)) }
+        coVerify(exactly = 1) { handler(CellDie(start.id, 0, 2 x 1)) }
+        coVerify(exactly = 1) { handler(GenerationEnded(start.id, 0)) }
     }
 
 })

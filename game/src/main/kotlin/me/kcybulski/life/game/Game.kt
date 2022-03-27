@@ -1,6 +1,7 @@
 package me.kcybulski.life.game
 
 class Game(
+    val id: GameId,
     private val map: GameMap,
     private val rules: Rules = Conway,
     private val generation: Int = 0,
@@ -14,21 +15,22 @@ class Game(
         newborns.forEach { notifyAboutNewborn(it) }
         dead.forEach { notifyAboutDeath(it) }
         notifyAboutGenerationEnd()
-        return copy(newMap)
+        return copyToNextGeneration(newMap)
     }
 
     private suspend fun notifyAboutNewborn(position: Position) {
-        eventBus.send(CellBorn(generation, position))
+        eventBus.send(CellBorn(id, generation, position))
     }
 
     private suspend fun notifyAboutDeath(position: Position) {
-        eventBus.send(CellDie(generation, position))
+        eventBus.send(CellDie(id, generation, position))
     }
     private suspend fun notifyAboutGenerationEnd() {
-        eventBus.send(GenerationEnded(generation))
+        eventBus.send(GenerationEnded(id, generation))
     }
 
-    private fun copy(newMap: GameMap) = Game(
+    private fun copyToNextGeneration(newMap: GameMap) = Game(
+        id = id,
         map = newMap,
         rules = rules,
         generation = generation + 1,

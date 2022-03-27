@@ -1,6 +1,6 @@
 package me.kcybulski.life.game
 
-class ActiveOnlyGameMap(
+internal class ActiveOnlyGameMap(
     override val livingCells: Set<Position> = emptySet()
 ) : GameMap {
 
