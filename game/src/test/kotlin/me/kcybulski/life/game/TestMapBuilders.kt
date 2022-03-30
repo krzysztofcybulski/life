@@ -1,4 +1,4 @@
-package me.kcybulski.life
+package me.kcybulski.life.game
 
 import me.kcybulski.life.game.Position
 

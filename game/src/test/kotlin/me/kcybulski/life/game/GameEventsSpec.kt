@@ -1,4 +1,4 @@
-package me.kcybulski.life
+package me.kcybulski.life.game
 
 import io.kotest.core.spec.style.ShouldSpec
 import io.mockk.coVerify
