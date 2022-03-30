@@ -5,7 +5,7 @@ import me.kcybulski.life.game.GameId
 
 interface GamesRepository {
 
-    fun find(gameId: GameId): Game?
-    fun save(game: Game): Game
+    suspend fun find(gameId: GameId): Game?
+    suspend fun save(game: Game): Game
 
 }

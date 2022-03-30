@@ -9,7 +9,7 @@ class GameFactory(
     suspend fun conway(firstCells: Set<Position> = emptySet()) =
         Game(
             id = GameId(randomUUID().toString()),
-            map = ActiveOnlyGameMap(firstCells),
+            map = LimitedSizeMap(ActiveOnlyGameMap(firstCells), 20),
             rules = Conway,
             generation = 0,
             eventBus = eventBus
