@@ -5,13 +5,14 @@ import io.mockk.coVerify
 import io.mockk.mockk
 import me.kcybulski.life.game.CellBorn
 import me.kcybulski.life.game.CellDie
+import me.kcybulski.life.game.GameEvent
 import me.kcybulski.life.game.GenerationEnded
 import me.kcybulski.life.game.HandlersEventBus
 import me.kcybulski.life.game.x
 
 class GameEventsSpec : ShouldSpec({
 
-    val handler = mockk<suspend (Any) -> Unit>(relaxed = true)
+    val handler = mockk<suspend (GameEvent) -> Unit>(relaxed = true)
     val eventBus = HandlersEventBus(listOf(handler))
 
     should("emit events") {

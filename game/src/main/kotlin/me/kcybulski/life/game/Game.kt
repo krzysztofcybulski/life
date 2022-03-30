@@ -1,6 +1,6 @@
 package me.kcybulski.life.game
 
-class Game(
+class Game internal constructor(
     val id: GameId,
     private val map: GameMap,
     private val rules: Rules = Conway,

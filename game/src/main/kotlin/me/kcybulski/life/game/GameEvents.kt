@@ -6,6 +6,11 @@ interface GameEvent {
 
 }
 
+data class GameStarted(
+    override val id: GameId,
+    val cells: Set<Position>
+): GameEvent
+
 data class CellBorn(
     override val id: GameId,
     val generation: Int,

@@ -7,7 +7,7 @@ import me.kcybulski.life.game.NopEventBus
 import me.kcybulski.life.game.Position
 
 
-fun conway(
+suspend fun conway(
     map: Set<Position> = emptyMap(),
     eventBus: EventBus = NopEventBus
 ): Game = GameFactory(eventBus).conway(map)
